@@ -156,8 +156,9 @@ PS1=$PS1"\$(if [[ \$? == 0 ]]; then echo \"${Green}\342\234\223 \"; else echo \"
 PS1=$PS1"${Yellow}"
 PS1=$PS1'(${timer_show} s)'
 PS1=$PS1" \T "
-PS1=$PS1"${Green}\u${White}@${BBlack}${Cyan}$HOST${Color_off}${White}:${Purple}\w"
+PS1=$PS1"${Green}\u${White}@${Cyan}$HOST${Color_off}${White}:${Purple}\w"
 PS1="$PS1 \$($( cat git-ps1.sh ))"
+PS1="$PS1 ${ICyan}\$([[ \j -gt 0 ]] && echo [\j])"
 PS1=$PS1"${NL}\[${Color_Off}\]$ "
 
 # enable proper colored terminal
