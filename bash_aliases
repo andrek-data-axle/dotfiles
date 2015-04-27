@@ -2,7 +2,7 @@ alias chartlib='cd ~/webapps/chartLib'
 alias nvi='nvim'
 alias apt-upgrade='sudo apt-get -qq update && sudo apt-get upgrade'
 function ltt { ls -lhtr $1 | tail -$2; }
-alias gg='git log --oneline --abbrev-commit --all --graph --decorate --color'
+alias gg='git log --oneline --abbrev-commit --all --graph --decorate --color | head'
 github-create() {
   repo_name=$1
 
