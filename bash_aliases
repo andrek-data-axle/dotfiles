@@ -1,44 +1,13 @@
-alias chartlib='cd ~/webapps/chartLib'
+alias vi='nvim'
 alias nvi='nvim'
-alias apt-upgrade='sudo apt-get -qq update && sudo apt-get upgrade'
-function ltt { ls -lhtr $1 | tail -$2; }
+alias ls='ls -G'
+alias lt='ls -lhtr'
+alias ltt='ls -lhtr | tail'
 alias gg='git log --oneline --abbrev-commit --all --graph --decorate --color | head'
-github-create() {
-  repo_name=$1
+alias ggl='git log --oneline --abbrev-commit --all --graph --decorate --color'
+alias gs='git status -s'
+alias be='bundle exec'
+alias pytest='python -m unittest discover'
 
-  dir_name=`basename $(pwd)`
+# function passphrase { cd /usr/share/dict; for n in {1..10}; do for f in propernames connectives words words; do i=`od -vAn -N4 -tu4 < /dev/urandom`; let "j = $i%$(wc -l $f | awk '{print $1}')"; head -$j $f| tail -1; done; done | xargs; cd - }
 
-  if [ "$repo_name" = "" ]; then
-    echo "Repo name (hit enter to use '$dir_name')?"
-    read repo_name
-  fi
-
-  if [ "$repo_name" = "" ]; then
-    repo_name=$dir_name
-  fi
-
-  username=`git config github.user`
-  if [ "$username" = "" ]; then
-    echo "Could not find username, run 'git config --global github.user <username>'"
-    invalid_credentials=1
-  fi
-
-  token=`git config github.token`
-  if [ "$token" = "" ]; then
-    echo "Could not find token, run 'git config --global github.token <token>'"
-    invalid_credentials=1
-  fi
-
-  if [ "$invalid_credentials" == "1" ]; then
-    return 1
-  fi
-
-  echo -n "Creating Github repository '$repo_name' ..."
-  curl -u "$username:$token" https://api.github.com/user/repos -d '{"name":"'$repo_name'"}' > /dev/null 2>&1
-  echo " done."
-
-  echo -n "Pushing local code to remote ..."
-  git remote add origin https://github.com/$username/$repo_name.git > /dev/null 2>&1
-  git push -u origin master > /dev/null 2>&1
-  echo " done."
-}
