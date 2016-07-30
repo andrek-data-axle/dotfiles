@@ -23,7 +23,7 @@ HISTFILESIZE=2000000
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
-if [ -f ~/bin ]; then
+if [ -d ~/bin ]; then
   PATH="$HOME/bin:$PATH"
 fi
 
@@ -157,7 +157,7 @@ PS1=$PS1"${Yellow}"
 PS1=$PS1'(${timer_show} s)'
 PS1=$PS1" \T "
 PS1=$PS1"${Green}\u${White}@${Cyan}$HOST${Color_off}${White}:${Purple}\w"
-PS1="$PS1 \$($( cat git-ps1.sh ))"
+PS1="$PS1 \$($( cat ~/.git-ps1.sh ))"
 PS1="$PS1 ${ICyan}\$([[ \j -gt 0 ]] && echo [\j])"
 PS1=$PS1"${NL}\[${Color_Off}\]$ "
 
