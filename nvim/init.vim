@@ -25,7 +25,8 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'scrooloose/nerdtree'
 Plugin 'jeetsukumaran/vim-buffergator'
 Plugin 'kien/ctrlp.vim'
-Plugin 'rking/ag.vim'
+Plugin 'mileszs/ack.vim'
+"Plugin 'rking/ag.vim' " deprecated
 Plugin 'AndrewRadev/splitjoin.vim'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'tomasr/molokai'
@@ -33,13 +34,15 @@ Plugin 'derekwyatt/vim-scala'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'bling/vim-airline'
 Plugin 'tpope/vim-fugitive'
-Plugin 'JamshedVesuna/vim-markdown-preview'
+"Plugin 'JamshedVesuna/vim-markdown-preview'
 "Plugin 'nvie/vim-flake8'
 Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-unimpaired'
 Bundle 'mattn/webapi-vim'
 Bundle 'mattn/gist-vim'
 Plugin 'chrisbra/histwin.vim'
+Plugin 'amperser/proselint', {'rtp': 'plugins/vim/syntastic_proselint/'}
+Plugin 'Yggdroot/indentLine'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -77,9 +80,16 @@ map <C-b> :BuffergatorToggle<CR>
 " ctrlp
 " use ctrlp to search for filenames
 " *****************************************************************************
-" ag
+" ack
 " search all files for pattern
-" :ag {pattern} [{directory}]
+" :Ack [options] {pattern} [{directories}]
+"
+" use Ag not Ack
+let g:ackprg = 'ag --vimgrep --smart-case'
+cnoreabbrev ag Ack
+cnoreabbrev aG Ack
+cnoreabbrev Ag Ack
+cnoreabbrev AG Ack
 " *****************************************************************************
 " splitjoin
 " gS to split a one line if statement into multiline
@@ -91,6 +101,10 @@ map <C-b> :BuffergatorToggle<CR>
 " *****************************************************************************
 " vim-scala
 " hilight scala file syntax
+" *****************************************************************************
+" vim-easymotion
+" use ,<motion> instead of ,,<motion>
+map <Leader> <Plug>(easymotion-prefix)
 " *****************************************************************************
 " vim-airline
 " use powerline font
@@ -126,13 +140,19 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
 let g:syntastic_loc_list_height = 3
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_ruby_checkers = ['rubocop']
+let g:syntastic_rake_checkers = ['rubocop']
+let g:syntastic_markdown_checkers = ['proselint']
+let g:syntastic_tex_checkers = ['proselint']
+let g:syntastic_text_checkers = ['proselint']
+" the sqlint doesn't seem to work very well :(
+let g:syntastic_sql_checkers = []
 " *****************************************************************************
 " vim-unimpaired
 " *****************************************************************************
@@ -145,15 +165,21 @@ let g:gist_api_url = 'https://git.innova-partners.com/api/v3'
 " *****************************************************************************
 " histwin
 " *****************************************************************************
-" use crtl-u to open history browser
-map <C-u> :Histwin<CR>
+" use leader u to open history browser
+nnoremap <leader>u :Histwin<CR>
+" *****************************************************************************
+" indent guides
+" *****************************************************************************
+" guide character
+let g:indentLine_char = '┆'
+let g:indentLine_color_term = 239
 " *****************************************************************************
 " END PLUGIN DESCRIPTIONS
 
-filetype indent on " load filetype-specific indent files
+" load filetype-specific indent files
+filetype indent on
 
 " With a map leader it's possible to do extra key combinations
-" like <leader>w saves the current file
 let mapleader=","
 " one second timeout for leader+key combos
 set timeout timeoutlen=1000 ttimeoutlen=1000
@@ -199,6 +225,9 @@ set novisualbell
 syntax enable
 set background=dark
 colorscheme solarized
+
+" Don't hide characters in LaTeX
+let g:tex_fast= ""
 
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
@@ -268,13 +297,13 @@ autocmd BufReadPost *
 " Remap VIM 0 to first non-blank character
 map 0 ^
 
-" Delete trailing white space with ,w
+" Delete trailing white space with ,,w
 func! DeleteTrailingWS()
   exe "normal mz"
   %s/\s\+$//ge
   exe "normal `z"
 endfunc
-map <leader>w :call DeleteTrailingWS()<cr>
+map <leader><leader>w :call DeleteTrailingWS()<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Spell checking
@@ -300,10 +329,15 @@ map <leader>s? z=
 map <leader>pp :setlocal paste!<cr>
 
 " preload the p yank buffer with binding.pry line
-let @p="Orequire 'pry'; binding.pry"
+map <leader>pry Orequire 'pry'; binding.pry<esc>j
+map <leader>pdb Oimport pdb; pdb.set_trace()<esc>j
 
+map <leader>nonp /\(\p\\|$\)\@!.<esc>
 if !has('nvim')
   set clipboard=unnamed
 else
   set clipboard+=unnamedplus
 endif
+
+" Edit crontab files on OSX
+autocmd filetype crontab setlocal nobackup nowritebackup
