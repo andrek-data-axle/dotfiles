@@ -15,5 +15,6 @@ fresh bashrc --file
 fresh colors --file
 fresh git-ps1.sh --file
 fresh gitconfig --file
+fresh init.vim --file=~/.config/nvim/init.vim
 fresh inputrc --file
 fresh zshrc --file
