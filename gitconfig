@@ -1,0 +1,27 @@
+[user]
+	name = Alex Mooney
+	email = amooney@covermymeds.com
+[push]
+	default = current
+[core]
+	editor = nvim
+	excludesfile = /Users/amooney/.gitignore_global
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Volumes/SourceTree/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[merge]
+	tool = vimdiff
+	conflictstyle = diff3
+[github]
+	user = amooney
+[alias]
+	co = checkout
+	cp = cherry-pick
+	ci = commit -v
+	st = status
+dsf = "!f() { [ \"$GIT_PREFIX\" != \"\" ] && cd "$GIT_PREFIX"; git diff --color $@ | diff-so-fancy | less --tabs=4 -R; }; f"
+[diff]
+	compactionHeuristic = true
