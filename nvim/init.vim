@@ -1,53 +1,31 @@
 " *****************************************************************************
-" BEGIN VUNDLE STUFF
-filetype off                  " required
+" BEGIN PLUG STUFF
+call plug#begin('~/.vim/plugged')
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-" "call vundle#begin('~/some/path/here')
-"
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
-"
-" The following are examples of different formats supported.
-" plugin on GitHub repo
-"Plugin 'tpope/vim-fugitive'
-" plugin from http://vim-scripts.org/vim/scripts.html
-"Plugin 'L9'
-" Git plugin not hosted on GitHub
-"Plugin 'git://git.wincent.com/command-t.git'
-" git repos on your local machine (i.e. when working on your own plugin)
-"Plugin 'file:///home/gmarik/path/to/plugin'
-"
-Plugin 'airblade/vim-gitgutter'
-Plugin 'scrooloose/nerdtree'
-Plugin 'jeetsukumaran/vim-buffergator'
-Plugin 'kien/ctrlp.vim'
-Plugin 'mileszs/ack.vim'
-"Plugin 'rking/ag.vim' " deprecated
-Plugin 'AndrewRadev/splitjoin.vim'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'tomasr/molokai'
-Plugin 'derekwyatt/vim-scala'
-Plugin 'easymotion/vim-easymotion'
-Plugin 'bling/vim-airline'
-Plugin 'tpope/vim-fugitive'
-"Plugin 'JamshedVesuna/vim-markdown-preview'
-"Plugin 'nvie/vim-flake8'
-Plugin 'scrooloose/syntastic'
-Plugin 'tpope/vim-unimpaired'
-Bundle 'mattn/webapi-vim'
-Bundle 'mattn/gist-vim'
-Plugin 'chrisbra/histwin.vim'
-Plugin 'amperser/proselint', {'rtp': 'plugins/vim/syntastic_proselint/'}
-Plugin 'Yggdroot/indentLine'
+Plug 'airblade/vim-gitgutter'
+" NERD tree will be loaded on the first invocation of NERDTreeToggle command
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'jeetsukumaran/vim-buffergator'
+Plug 'kien/ctrlp.vim'
+Plug 'mileszs/ack.vim'
+Plug 'AndrewRadev/splitjoin.vim'
+Plug 'altercation/vim-colors-solarized'
+Plug 'tomasr/molokai'
+Plug 'derekwyatt/vim-scala'
+Plug 'easymotion/vim-easymotion'
+Plug 'bling/vim-airline'
+Plug 'tpope/vim-fugitive'
+Plug 'scrooloose/syntastic'
+Plug 'tpope/vim-unimpaired'
+Plug 'mattn/webapi-vim'
+Plug 'mattn/gist-vim'
+Plug 'chrisbra/histwin.vim'
+Plug 'amperser/proselint', {'rtp': 'plugins/vim/syntastic_proselint/'}
+Plug 'Yggdroot/indentLine'
 
-call vundle#end()            " required
-filetype plugin indent on    " required
-" END VUNDLE STUFF
-"
+call plug#end()
+" END PLUG STUFF
+
 " BEGIN PLUGIN DESCRIPTIONS
 " *****************************************************************************
 " vim-gitgutter
