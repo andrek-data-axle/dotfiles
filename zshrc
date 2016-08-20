@@ -101,5 +101,7 @@ SAVEHIST=100000
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 export PATH="/usr/local/sbin:$PATH:/Library/TeX/texbin"
+export PATH="$PATH:~/go/bin"
+export GOPATH="~/go"
 
 source ~/.fresh/build/shell.sh

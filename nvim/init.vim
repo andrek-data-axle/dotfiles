@@ -22,6 +22,7 @@ Plug 'mattn/gist-vim'
 Plug 'chrisbra/histwin.vim'
 Plug 'amperser/proselint', {'rtp': 'plugins/vim/syntastic_proselint/'}
 Plug 'Yggdroot/indentLine'
+Plug 'fatih/vim-go'
 
 call plug#end()
 " END PLUG STUFF
@@ -151,6 +152,10 @@ nnoremap <leader>u :Histwin<CR>
 " guide character
 let g:indentLine_char = '┆'
 let g:indentLine_color_term = 239
+" *****************************************************************************
+" vim-go
+" *****************************************************************************
+"
 " *****************************************************************************
 " END PLUGIN DESCRIPTIONS
 
