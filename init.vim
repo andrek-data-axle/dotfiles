@@ -233,6 +233,9 @@ set undofile
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab and indent related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" load filetype-specific indent files
+filetype indent on
+
 " Use spaces instead of tabs
 set expandtab
 
