@@ -18,3 +18,4 @@ fresh gitconfig --file
 fresh init.vim --file=~/.config/nvim/init.vim
 fresh inputrc --file
 fresh zshrc --file
+fresh gitignore_global --file
