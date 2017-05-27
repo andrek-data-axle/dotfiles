@@ -1,3 +1,6 @@
+" map the leader before using it in plugin key combos
+let mapleader=","
+
 " *****************************************************************************
 " BEGIN PLUG STUFF
 call plug#begin('~/.vim/plugged')
