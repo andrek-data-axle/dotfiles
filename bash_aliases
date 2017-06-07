@@ -3,7 +3,7 @@ alias vim='nvim'
 alias nvi='nvim'
 alias ls='ls -G'
 alias lt='ls -lhtr'
-alias ltt='ls -lhtr | tail'
+function ltt { ls -lhtr $1 | tail -$2; }
 alias sdiff='sdiff -w $(tput cols)'
 alias gg='git log --oneline --abbrev-commit --all --graph --decorate --color | head'
 alias ggl='git log --oneline --abbrev-commit --all --graph --decorate --color'
