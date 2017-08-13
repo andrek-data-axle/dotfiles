@@ -22,6 +22,7 @@ Plug 'mattn/gist-vim'
 Plug 'chrisbra/histwin.vim'
 Plug 'amperser/proselint', {'rtp': 'plugins/vim/syntastic_proselint/'}
 Plug 'Yggdroot/indentLine'
+Plug 'elixir-lang/vim-elixir'
 
 call plug#end()
 " END PLUG STUFF
