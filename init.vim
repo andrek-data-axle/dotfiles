@@ -88,8 +88,6 @@ map <Leader> <Plug>(easymotion-prefix)
 " vim-airline
 " use powerline font
 let g:airline_powerline_fonts = 1
-" quickly leave insert mode
-set timeoutlen=50
 " only show the swanky mode indicator
 set noshowmode
 " Enable the list of buffers
@@ -161,7 +159,7 @@ filetype indent on
 " With a map leader it's possible to do extra key combinations
 let mapleader=","
 " one second timeout for leader+key combos
-set timeout timeoutlen=1000 ttimeoutlen=1000
+set timeout timeoutlen=1000
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
