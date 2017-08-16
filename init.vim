@@ -335,3 +335,6 @@ endif
 
 " Edit crontab files on OSX
 autocmd filetype crontab setlocal nobackup nowritebackup
+
+" Uppercase SQL keywords. See https://groups.google.com/d/msg/vim_use/k-evBSOrNQM/PRZaLxsT1ksJ
+map <leader>sql :%s/\<\w\+\>/\=synIDattr(synID(line('.'),col('.'),1), 'name')=~'sql\%(keyword\|operator\|statement\)'?toupper(submatch(0)):submatch(0)/g
