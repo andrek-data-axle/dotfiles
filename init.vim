@@ -61,13 +61,24 @@ map <C-b> :BuffergatorToggle<CR>
 " *****************************************************************************
 " ctrlp
 " use ctrlp to search for filenames
+"
+" user ripgrep
+if executable('rg')
+  set grepprg=rg\ --color=never
+  let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
+  let g:ctrlp_use_caching = 0
+endif
 " *****************************************************************************
 " ack
 " search all files for pattern
 " :Ack [options] {pattern} [{directories}]
 "
-" use Ag not Ack
-let g:ackprg = 'ag --vimgrep --smart-case'
+" use ripgrep not Ack
+let g:ackprg = 'rg --vimgrep --smart-case'
+cnoreabbrev rg Ack
+cnoreabbrev rG Ack
+cnoreabbrev Rg Ack
+cnoreabbrev RG Ack
 cnoreabbrev ag Ack
 cnoreabbrev aG Ack
 cnoreabbrev Ag Ack
