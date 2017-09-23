@@ -20,3 +20,4 @@ fresh inputrc --file
 fresh zshrc --file
 fresh gitignore_global --file
 fresh ctags --file
+fresh tmux.conf --file
