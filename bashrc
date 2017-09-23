@@ -164,9 +164,7 @@ PS1=$PS1"${NL}\[${Color_Off}\]$ "
 # enable proper colored terminal
 TERM=xterm-256color
 
-HTTP_PROXY=http://proxy.jpmchase.net:8443/
-HTTPS_PROXY=http://proxy.jpmchase.net:8443/
-http_proxy=http://proxy.jpmchase.net:8443/
-https_proxy=http://proxy.jpmchase.net:8443/
+[[ -f ~/.bash_aliases ]] && source ~/.bash_aliases
+[[ -f ~/.local_aliases ]] && source ~/.local_aliases
 
 fortune fictioncontest | cowsay | lolcat
