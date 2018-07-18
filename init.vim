@@ -108,6 +108,14 @@ set noshowmode
 let g:airline#extensions#tabline#enabled = 1
 " Show just the filename
 let g:airline#extensions#tabline#fnamemod = ':t'
+" Skip the version control bit (I do this with zsh / bash)
+let g:airline_section_b = ''
+" Skip the file information because it uses too many characters
+let g:airline_section_x = ''
+let g:airline_section_y = ''
+" Don't draw all these things I just disabled
+let g:airline_skip_empty_sections = 1
+
 " *****************************************************************************
 " vim-markdown-preview
 " ctrl-m opens a preview in the browser or refresh current preview
@@ -162,7 +170,7 @@ nnoremap <leader>u :Histwin<CR>
 " indent guides
 " *****************************************************************************
 " guide character
-let g:indentLine_char = '┆'
+let g:indentLine_char = '.'
 let g:indentLine_color_term = 239
 " *****************************************************************************
 " END PLUGIN DESCRIPTIONS
@@ -225,13 +233,16 @@ set ffs=unix,dos,mac
 
 " Show a highlighted color bar at 100 characters
 set colorcolumn=100
+set textwidth=100
 " Or 80 in a ruby file
 autocmd BufRead,BufNewFile *.rb set colorcolumn=80
+autocmd BufRead,BufNewFile *.rb set textwidth=80
 " and 72 in a gitcommmit
 autocmd FileType gitcommit set colorcolumn=72
+autocmd FileType gitcommit set textwidth=72
 
 " Show trailing whitespaces
-set list listchars=tab:»\ ,trail:•,nbsp:+
+set list listchars=tab:»\ ,trail:•,extends:›,precedes:‹,nbsp:•
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups and undo
