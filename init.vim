@@ -62,7 +62,7 @@ map <C-b> :BuffergatorToggle<CR>
 " ctrlp
 " use ctrlp to search for filenames
 "
-" user ripgrep
+" use ripgrep
 if executable('rg')
   set grepprg=rg\ --color=never
   let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
