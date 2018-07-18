@@ -16,3 +16,5 @@ alias urldecode='python -c "import sys, urllib as ul; print ul.unquote_plus(sys.
 alias urlencode='python -c "import sys, urllib as ul; print ul.quote_plus(sys.argv[1])"'
 
 alias passphrase='cd /usr/share/dict; for n in {1..10}; do for f in propernames connectives words words; do i=`od -vAn -N4 -tu4 < /dev/urandom`; let "j = $i%$(wc -l $f | xargs echo | cut -d\  -f1)"; head -$j $f| tail -1; done | xargs ; done; cd -'
+
+alias de='docker exec -e COLUMNS="`tput cols`" -e LINES="`tput lines`" -ti'
