@@ -241,6 +241,9 @@ autocmd BufRead,BufNewFile *.rb set textwidth=80
 autocmd FileType gitcommit set colorcolumn=72
 autocmd FileType gitcommit set textwidth=72
 
+" Use Q to wrap lines over a motion
+nnoremap Q gq
+
 " Show trailing whitespaces
 set list listchars=tab:»\ ,trail:•,extends:›,precedes:‹,nbsp:•
 
