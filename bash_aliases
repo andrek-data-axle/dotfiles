@@ -5,7 +5,7 @@ alias ls='ls -G'
 alias lt='ls -lhtr'
 function ltt { ls -lhtr $1 | tail -$2; }
 alias sdiff='sdiff -w $(tput cols)'
-alias gg='git log --oneline --abbrev-commit --all --graph --decorate --color | head'
+alias gg='git log --oneline --abbrev-commit --all --graph --decorate --color | head -30'
 alias ggl='git log --oneline --abbrev-commit --all --graph --decorate --color'
 alias gs='git status -s'
 alias be='bundle exec'
