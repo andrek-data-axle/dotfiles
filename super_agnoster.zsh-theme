@@ -1,6 +1,7 @@
 # vim:ft=zsh ts=2 sw=2 sts=2
 #
 # agnoster's Theme - https://gist.github.com/3712874
+# heavily modified by AMM
 # A Powerline-inspired theme for ZSH
 #
 # # README
@@ -221,7 +222,6 @@ build_prompt() {
   prompt_context
   prompt_dir
   prompt_git
-  prompt_hg
   prompt_end
 }
 

@@ -18,6 +18,7 @@ fresh gitconfig --file
 fresh init.vim --file=~/.config/nvim/init.vim
 fresh inputrc --file
 fresh zshrc --file
+fresh super_agnoster.zsh-theme --file=~/.oh-my-zsh/themes/super_agnoster.zsh-theme
 fresh gitignore_global --file
 fresh ctags --file
 fresh tmux.conf --file
