@@ -97,7 +97,7 @@ SAVEHIST=100000
 
 [[ -f ~/.local_aliases ]] && source ~/.local_aliases
 [[ -f ~/.bash_aliases ]] && source ~/.bash_aliases
-
+[[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 export PATH="/usr/local/sbin:$PATH:/Library/TeX/texbin"
