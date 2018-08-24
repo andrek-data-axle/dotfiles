@@ -18,12 +18,11 @@ Plug 'derekwyatt/vim-scala'
 Plug 'easymotion/vim-easymotion'
 Plug 'bling/vim-airline'
 Plug 'tpope/vim-fugitive'
-Plug 'scrooloose/syntastic'
+Plug 'w0rp/ale'
 Plug 'tpope/vim-unimpaired'
 Plug 'mattn/webapi-vim'
 Plug 'mattn/gist-vim'
 Plug 'chrisbra/histwin.vim'
-Plug 'amperser/proselint', {'rtp': 'plugins/vim/syntastic_proselint/'}
 Plug 'Yggdroot/indentLine'
 Plug 'elixir-lang/vim-elixir'
 Plug 'ludovicchabant/vim-gutentags'
@@ -137,24 +136,8 @@ let vim_markdown_preview_github=1
 " auto call Flake8 on python file save
 " autocmd BufWritePost *.py call Flake8()
 " *****************************************************************************
-" Syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-" let g:syntastic_always_populate_loc_list = 1
-" let g:syntastic_auto_loc_list = 1
-let g:syntastic_loc_list_height = 3
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-let g:syntastic_python_checkers = ['flake8']
-let g:syntastic_ruby_checkers = ['rubocop']
-let g:syntastic_rake_checkers = ['rubocop']
-let g:syntastic_markdown_checkers = ['proselint']
-let g:syntastic_tex_checkers = ['proselint']
-let g:syntastic_text_checkers = ['proselint']
-" the sqlint doesn't seem to work very well :(
-let g:syntastic_sql_checkers = []
+" ALE
+let g:airline#extensions#ale#enabled = 1
 " *****************************************************************************
 " vim-unimpaired
 " *****************************************************************************
