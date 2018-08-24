@@ -26,6 +26,9 @@ Plug 'chrisbra/histwin.vim'
 Plug 'amperser/proselint', {'rtp': 'plugins/vim/syntastic_proselint/'}
 Plug 'Yggdroot/indentLine'
 Plug 'elixir-lang/vim-elixir'
+Plug 'ludovicchabant/vim-gutentags'
+Plug 'majutsushi/tagbar'
+Plug 'vim-scripts/closetag.vim'
 
 call plug#end()
 " END PLUG STUFF
@@ -172,6 +175,11 @@ nnoremap <leader>u :Histwin<CR>
 " guide character
 let g:indentLine_char = '.'
 let g:indentLine_color_term = 239
+" *****************************************************************************
+" vim-gutentags
+" *****************************************************************************
+" majutsushi/tagbar
+nmap <C-t> :TagbarToggle<CR>
 " *****************************************************************************
 " END PLUGIN DESCRIPTIONS
 
