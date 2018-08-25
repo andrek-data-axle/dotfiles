@@ -22,6 +22,6 @@ fresh super_agnoster.zsh-theme --file=~/.oh-my-zsh/themes/super_agnoster.zsh-the
 fresh fzf.zsh --file
 fresh gitignore_global --file
 fresh ctags --file
-fresh tmux.conf --file
+fresh tmux.conf --file=~/.tmux.conf
 fresh bin/with-dir --bin
 fresh bin/only-dir --bin

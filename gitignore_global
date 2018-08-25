@@ -3,3 +3,5 @@ tags.lock
 tags.temp
 .DS_Store
 .rgignore
+.ruby-version
+npm-debug.log
