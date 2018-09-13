@@ -95,13 +95,8 @@ setopt HIST_IGNORE_DUPS
 setopt APPEND_HISTORY
 SAVEHIST=100000
 
-[[ -f ~/.local_aliases ]] && source ~/.local_aliases
 [[ -f ~/.bash_aliases ]] && source ~/.bash_aliases
 [[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
-
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-export PATH="/usr/local/sbin:$PATH:/Library/TeX/texbin"
-export PATH="$PATH:~/go/bin"
-export GOPATH="~/go"
-
-source ~/.fresh/build/shell.sh
+[[ -f ~/.iterm2_shell_integration.zsh ]] && source "${HOME}/.iterm2_shell_integration.zsh"
+[[ -f ~/.fresh/build/shell.sh ]] && source ~/.fresh/build/shell.sh
+[[ -f ~/.local_aliases ]] && source ~/.local_aliases
