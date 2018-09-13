@@ -40,4 +40,4 @@ _fzf_compgen_dir() {
 }
 
 # Add C-g C-* key bindings for git completions
-source ~/.home/zsh/.fzf.git.zsh
+source ~/.oh-my-zsh/custom/.fzf.git.zsh
