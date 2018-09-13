@@ -204,6 +204,7 @@ prompt_status() {
 function precmd {
   timer_show=$(($SECONDS - $timer))
 }
+timer=$SECONDS
 
 TMOUT=1
 TRAPALRM() { timer=$SECONDS }
