@@ -12,7 +12,6 @@ Plug 'jeetsukumaran/vim-buffergator'
 Plug 'kien/ctrlp.vim'
 Plug 'mileszs/ack.vim'
 Plug 'AndrewRadev/splitjoin.vim'
-Plug 'altercation/vim-colors-solarized'
 Plug 'tomasr/molokai'
 Plug 'derekwyatt/vim-scala'
 Plug 'easymotion/vim-easymotion'
@@ -231,7 +230,6 @@ set novisualbell
 " Enable syntax highlighting
 syntax enable
 set background=dark
-colorscheme solarized
 
 " Don't hide characters in LaTeX
 let g:tex_fast= ""
@@ -241,6 +239,7 @@ set ffs=unix,dos,mac
 
 " Show a highlighted color bar at 100 characters
 set colorcolumn=100
+hi ColorColumn ctermbg=darkgrey guibg=darkgrey
 set textwidth=100
 " Or 80 in a ruby file
 autocmd BufRead,BufNewFile *.rb set colorcolumn=80
@@ -364,3 +363,6 @@ autocmd filetype crontab setlocal nobackup nowritebackup
 
 " Uppercase SQL keywords. See https://groups.google.com/d/msg/vim_use/k-evBSOrNQM/PRZaLxsT1ksJ
 map <leader>sql :%s/\<\w\+\>/\=synIDattr(synID(line('.'),col('.'),1), 'name')=~'sql\%(keyword\|operator\|statement\)'?toupper(submatch(0)):submatch(0)/g
+
+" Incremental command feedback
+set inccommand=nosplit
