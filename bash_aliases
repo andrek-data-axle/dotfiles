@@ -10,7 +10,7 @@ alias gg='ggl | head -30'
 alias gs='git status'
 alias be='bundle exec'
 alias pytest='python -m unittest discover'
-alias weather='curl "http://wttr.in/Columbus?m"'
+alias weather='curl "http://wttr.in/Seattle"'
 
 alias urldecode='python -c "import sys, urllib as ul; print ul.unquote_plus(sys.argv[1])"'
 alias urlencode='python -c "import sys, urllib as ul; print ul.quote_plus(sys.argv[1])"'
