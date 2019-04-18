@@ -5,9 +5,9 @@ alias ls='ls -G'
 alias lt='ls -lhtr'
 function ltt { ls -lhtr $1 | tail -$2; }
 alias sdiff='sdiff -w $(tput cols)'
-alias gg='git log --oneline --abbrev-commit --all --graph --decorate --color | head -30'
-alias ggl='git log --oneline --abbrev-commit --all --graph --decorate --color'
-alias gs='git status -s'
+alias ggl="git log --all --graph --decorate --color --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+alias gg='ggl | head -30'
+alias gs='git status'
 alias be='bundle exec'
 alias pytest='python -m unittest discover'
 alias weather='curl "http://wttr.in/Columbus?m"'
