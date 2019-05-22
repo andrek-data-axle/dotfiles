@@ -12,15 +12,11 @@ Plug 'jeetsukumaran/vim-buffergator'
 Plug 'kien/ctrlp.vim'
 Plug 'mileszs/ack.vim'
 Plug 'AndrewRadev/splitjoin.vim'
-Plug 'tomasr/molokai'
-Plug 'derekwyatt/vim-scala'
 Plug 'easymotion/vim-easymotion'
 Plug 'bling/vim-airline'
 Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-unimpaired'
-Plug 'mattn/webapi-vim'
-Plug 'mattn/gist-vim'
 Plug 'chrisbra/histwin.vim'
 Plug 'amperser/proselint', {'rtp': 'plugins/vim/syntastic_proselint/'}
 Plug 'Yggdroot/indentLine'
@@ -90,13 +86,6 @@ cnoreabbrev AG Ack
 " gS to split a one line if statement into multiline
 " gJ it join a multiline if statement into one line
 " *****************************************************************************
-" solarized
-" molokai
-" colorschemes
-" *****************************************************************************
-" vim-scala
-" hilight scala file syntax
-" *****************************************************************************
 " vim-easymotion
 " use ,<motion> instead of ,,<motion>
 map <Leader> <Plug>(easymotion-prefix)
@@ -119,23 +108,6 @@ let g:airline_section_y = ''
 let g:airline_skip_empty_sections = 1
 
 " *****************************************************************************
-" vim-markdown-preview
-" ctrl-m opens a preview in the browser or refresh current preview
-let vim_markdown_preview_hotkey='<C-m>'
-" Display images and refresh on buffer write
-" let vim_markdown_preview_toggle=2
-" Use chrome for the preview
-let vim_markdown_preview_browser='Google Chrome'
-" clean up the html file after showing it
-" let vim_markdown_preview_temp_file=0
-" use grip to generate github style markdown
-let vim_markdown_preview_github=1
-" *****************************************************************************
-" vim-flake8
-" use <F7> to call manually
-" auto call Flake8 on python file save
-" autocmd BufWritePost *.py call Flake8()
-" *****************************************************************************
 " Syntastic
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -156,13 +128,6 @@ let g:syntastic_text_checkers = ['proselint']
 let g:syntastic_sql_checkers = []
 " *****************************************************************************
 " vim-unimpaired
-" *****************************************************************************
-" gist-vim
-" set gists to private by default
-let g:gist_post_private = 1
-
-" use GitHub enterprise
-let g:gist_api_url = 'https://git.innova-partners.com/api/v3'
 " *****************************************************************************
 " histwin
 " *****************************************************************************
@@ -248,9 +213,6 @@ autocmd BufRead,BufNewFile *.rb set textwidth=80
 autocmd FileType gitcommit set colorcolumn=72
 autocmd FileType gitcommit set textwidth=72
 
-" Use Q to wrap lines over a motion
-nnoremap Q gq
-
 " Show trailing whitespaces
 set list listchars=tab:»\ ,trail:•,extends:›,precedes:‹,nbsp:•
 
@@ -272,17 +234,16 @@ filetype indent on
 
 " Use spaces instead of tabs
 set expandtab
-" Except in HTML and JS
-au BufRead,BufNewFile *.html*,*js set noexpandtab
+" Except in JS
+au BufRead,BufNewFile *js set noexpandtab
 " And C
 au BufRead,BufNewFile *.c,*h set noexpandtab
 
 " 1 tab == 2 spaces
 set shiftwidth=2
 set tabstop=2
-" except in py and php files
+" except in py
 au BufRead,BufNewFile *.py,*pyw set shiftwidth=4 tabstop=4
-au Filetype php set shiftwidth=4 tabstop=4
 
 set ai "Auto indent
 set si "Smart indent
@@ -348,7 +309,7 @@ map <leader>s? z=
 map <leader>pp :setlocal paste!<cr>
 
 " preload the p yank buffer with binding.pry line
-map <leader>pry Orequire 'pry'; binding.pry<esc>j
+map <leader><leader>p Obinding.pry if true<esc>
 map <leader>pdb Oimport pdb; pdb.set_trace()<esc>j
 
 map <leader>nonp /\(\p\\|$\)\@!.<esc>
