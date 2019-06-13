@@ -42,9 +42,8 @@ let g:gitgutter_escape_grep = 1
 " open/close with Ctrl-e
 map <C-e> :NERDTreeToggle<CR>
 
-" open NERDTree when starting vim without a file
-" autocmd StdinReadPre * let s:std_in=1
-" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+" ,nf opens to current file in NT
+map <leader>nf :NERDTreeFind<CR>
 
 " close vim if the only open window is NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
