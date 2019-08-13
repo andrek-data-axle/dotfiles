@@ -15,15 +15,14 @@ Plug 'AndrewRadev/splitjoin.vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'bling/vim-airline'
 Plug 'tpope/vim-fugitive'
-Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-unimpaired'
 Plug 'chrisbra/histwin.vim'
-Plug 'amperser/proselint', {'rtp': 'plugins/vim/syntastic_proselint/'}
 Plug 'Yggdroot/indentLine'
 Plug 'elixir-lang/vim-elixir'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'majutsushi/tagbar'
 Plug 'vim-scripts/closetag.vim'
+Plug 'dense-analysis/ale'
 
 call plug#end()
 " END PLUG STUFF
@@ -112,26 +111,6 @@ let g:airline_section_x = ''
 let g:airline_section_y = ''
 " Don't draw all these things I just disabled
 let g:airline_skip_empty_sections = 1
-
-" *****************************************************************************
-" Syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-" let g:syntastic_always_populate_loc_list = 1
-" let g:syntastic_auto_loc_list = 1
-let g:syntastic_loc_list_height = 3
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-let g:syntastic_python_checkers = ['flake8']
-let g:syntastic_ruby_checkers = ['rubocop']
-let g:syntastic_rake_checkers = ['rubocop']
-let g:syntastic_markdown_checkers = ['proselint']
-let g:syntastic_tex_checkers = ['proselint']
-let g:syntastic_text_checkers = ['proselint']
-" the sqlint doesn't seem to work very well :(
-let g:syntastic_sql_checkers = []
 " *****************************************************************************
 " vim-unimpaired
 " *****************************************************************************
@@ -150,6 +129,13 @@ let g:indentLine_color_term = 239
 " *****************************************************************************
 " majutsushi/tagbar
 nmap <C-t> :TagbarToggle<CR>
+" *****************************************************************************
+" ale
+" *****************************************************************************
+let g:airline#extensions#ale#enabled = 1
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
+highlight ALEWarning ctermbg=Black
 " *****************************************************************************
 " END PLUGIN DESCRIPTIONS
 
