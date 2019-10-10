@@ -14,7 +14,7 @@ fresh bash_aliases --file
 fresh bashrc --file
 fresh colors --file
 fresh git-ps1.sh --file
-fresh gitconfig --file
+# fresh gitconfig --file
 fresh init.vim --file=~/.config/nvim/init.vim
 fresh inputrc --file
 fresh zshrc --file
@@ -26,3 +26,4 @@ fresh ctags --file
 fresh tmux.conf --file=~/.tmux.conf
 fresh bin/with-dir --bin
 fresh bin/only-dir --bin
+fresh irbrc --file

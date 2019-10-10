@@ -24,6 +24,7 @@ Plug 'elixir-lang/vim-elixir'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'majutsushi/tagbar'
 Plug 'vim-scripts/closetag.vim'
+Plug 'kchmck/vim-coffee-script'
 Plug 'dense-analysis/ale'
 
 call plug#end()
@@ -135,8 +136,8 @@ nmap <C-t> :TagbarToggle<CR>
 " ale
 " *****************************************************************************
 let g:airline#extensions#ale#enabled = 1
-nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-nmap <silent> <C-j> <Plug>(ale_next_wrap)
+nmap <silent> <A-k> <Plug>(ale_previous_wrap)
+nmap <silent> <A-j> <Plug>(ale_next_wrap)
 highlight ALEWarning ctermbg=Black
 " *****************************************************************************
 " END PLUGIN DESCRIPTIONS
@@ -200,9 +201,9 @@ set ffs=unix,dos,mac
 set colorcolumn=100
 hi ColorColumn ctermbg=darkgrey guibg=darkgrey
 set textwidth=100
-" Or 80 in a ruby file
-autocmd BufRead,BufNewFile *.rb set colorcolumn=80
-autocmd BufRead,BufNewFile *.rb set textwidth=80
+" Or 150 in a ruby file
+autocmd BufRead,BufNewFile *.rb set colorcolumn=150
+autocmd BufRead,BufNewFile *.rb set textwidth=150
 " and 72 in a gitcommmit
 autocmd FileType gitcommit set colorcolumn=72
 autocmd FileType gitcommit set textwidth=72
