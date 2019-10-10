@@ -5,3 +5,4 @@ tags.temp
 .rgignore
 .ruby-version
 npm-debug.log
+.vscode
