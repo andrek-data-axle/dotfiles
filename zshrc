@@ -100,3 +100,4 @@ SAVEHIST=100000
 [[ -f ~/.iterm2_shell_integration.zsh ]] && source "${HOME}/.iterm2_shell_integration.zsh"
 [[ -f ~/.fresh/build/shell.sh ]] && source ~/.fresh/build/shell.sh
 [[ -f ~/.local_aliases ]] && source ~/.local_aliases
+[[ -f ~/bin/z ]] && source ~/bin/z
