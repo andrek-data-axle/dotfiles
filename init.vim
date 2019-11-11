@@ -236,8 +236,8 @@ au BufRead,BufNewFile *.c,*h set noexpandtab
 " 1 tab == 2 spaces
 set shiftwidth=2
 set tabstop=2
-" except in py
-au BufRead,BufNewFile *.py,*pyw set shiftwidth=4 tabstop=4
+" except in py and c/cpp
+au BufRead,BufNewFile *.py,*pyw,*h,*c,*cpp set shiftwidth=4 tabstop=4
 
 set ai "Auto indent
 set si "Smart indent
