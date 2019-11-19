@@ -9,7 +9,7 @@ Plug 'airblade/vim-gitgutter'
 " NERD tree will be loaded on the first invocation of NERDTreeToggle command
 Plug 'scrooloose/nerdtree'
 Plug 'jeetsukumaran/vim-buffergator'
-Plug 'kien/ctrlp.vim'
+Plug 'cloudhead/neovim-fuzzy'
 Plug 'mileszs/ack.vim'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'easymotion/vim-easymotion'
@@ -65,15 +65,10 @@ let NERDTreeQuitOnOpen = 1
 " open with Ctrl-b
 map <C-b> :BuffergatorToggle<CR>
 " *****************************************************************************
-" ctrlp
-" use ctrlp to search for filenames
+" neovim-fuzzy
+" better than ctrlp search for filenames
 "
-" use ripgrep
-if executable('rg')
-  set grepprg=rg\ --color=never
-  let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
-  let g:ctrlp_use_caching = 0
-endif
+nnoremap <C-p> :FuzzyOpen<CR>
 " *****************************************************************************
 " ack
 " search all files for pattern
