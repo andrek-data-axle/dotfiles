@@ -9,8 +9,8 @@ Plug 'airblade/vim-gitgutter'
 " NERD tree will be loaded on the first invocation of NERDTreeToggle command
 Plug 'scrooloose/nerdtree'
 Plug 'jeetsukumaran/vim-buffergator'
-Plug 'cloudhead/neovim-fuzzy'
-Plug 'mileszs/ack.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'bling/vim-airline'
@@ -62,36 +62,23 @@ let NERDTreeQuitOnOpen = 1
 " *****************************************************************************
 " vim-buffergator
 " browse through buffers with NERDTree like interface
-" open with Ctrl-b
-map <C-b> :BuffergatorToggle<CR>
+nnoremap <C-b> :BuffergatorToggle<CR>
 " *****************************************************************************
-" neovim-fuzzy
-" better than ctrlp search for filenames
+" fzf.vim
 "
-nnoremap <C-p> :FuzzyOpen<CR>
-" *****************************************************************************
-" ack
-" search all files for pattern
-" :Ack [options] {pattern} [{directories}]
-"
-" use ripgrep not Ack
-let g:ackprg = 'rg --vimgrep --smart-case'
-cnoreabbrev rg Ack
-cnoreabbrev rG Ack
-cnoreabbrev Rg Ack
-cnoreabbrev RG Ack
-cnoreabbrev ag Ack
-cnoreabbrev aG Ack
-cnoreabbrev Ag Ack
-cnoreabbrev AG Ack
+nnoremap <C-p> :GFiles<CR>
+nnoremap <C-f> :Rg 
+nnoremap <Leader>g :BCommits<CR>
+let g:fzf_commits_log_options = '--color=always --format="%C(red)%h %C(auto)%s %C(green)(%cr) %C(bold blue)<%an>"'
+inoremap <expr> <c-x><c-f> fzf#vim#complete#path('rg --files')
+inoremap <expr> <c-x><c-l> fzf#vim#complete#line({'window': { 'width': 1.0, 'height': 0.3 }})
+
 " *****************************************************************************
 " splitjoin
 " gS to split a one line if statement into multiline
 " gJ it join a multiline if statement into one line
 " *****************************************************************************
 " vim-easymotion
-" use ,<motion> instead of ,,<motion>
-map <Leader> <Plug>(easymotion-prefix)
 " *****************************************************************************
 " vim-airline
 " use powerline font
@@ -282,7 +269,6 @@ map <leader><leader>w :call DeleteTrailingWS()<cr>
 map <leader>ss :setlocal spell!<cr>
 
 autocmd FileType gitcommit setlocal spell
-autocmd BufRead,BufNewFile *.txt setlocal spell
 autocmd BufRead,BufNewFile *.md  setlocal spell
 autocmd BufRead,BufNewFile *.tex setlocal spell
 
