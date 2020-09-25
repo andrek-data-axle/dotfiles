@@ -9,8 +9,8 @@ Plug 'airblade/vim-gitgutter'
 " NERD tree will be loaded on the first invocation of NERDTreeToggle command
 Plug 'scrooloose/nerdtree'
 Plug 'jeetsukumaran/vim-buffergator'
-Plug 'kien/ctrlp.vim'
-Plug 'mileszs/ack.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'bling/vim-airline'
@@ -24,6 +24,7 @@ Plug 'elixir-lang/vim-elixir'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'majutsushi/tagbar'
 Plug 'vim-scripts/closetag.vim'
+Plug 'kchmck/vim-coffee-script'
 Plug 'dense-analysis/ale'
 
 call plug#end()
@@ -61,41 +62,23 @@ let NERDTreeQuitOnOpen = 1
 " *****************************************************************************
 " vim-buffergator
 " browse through buffers with NERDTree like interface
-" open with Ctrl-b
-map <C-b> :BuffergatorToggle<CR>
+nnoremap <C-b> :BuffergatorToggle<CR>
 " *****************************************************************************
-" ctrlp
-" use ctrlp to search for filenames
+" fzf.vim
 "
-" use ripgrep
-if executable('rg')
-  set grepprg=rg\ --color=never
-  let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
-  let g:ctrlp_use_caching = 0
-endif
-" *****************************************************************************
-" ack
-" search all files for pattern
-" :Ack [options] {pattern} [{directories}]
-"
-" use ripgrep not Ack
-let g:ackprg = 'rg --vimgrep --smart-case'
-cnoreabbrev rg Ack
-cnoreabbrev rG Ack
-cnoreabbrev Rg Ack
-cnoreabbrev RG Ack
-cnoreabbrev ag Ack
-cnoreabbrev aG Ack
-cnoreabbrev Ag Ack
-cnoreabbrev AG Ack
+nnoremap <C-p> :GFiles<CR>
+nnoremap <C-f> :Rg 
+nnoremap <Leader>g :BCommits<CR>
+let g:fzf_commits_log_options = '--color=always --format="%C(red)%h %C(auto)%s %C(green)(%cr) %C(bold blue)<%an>"'
+inoremap <expr> <c-x><c-f> fzf#vim#complete#path('rg --files')
+inoremap <expr> <c-x><c-l> fzf#vim#complete#line({'window': { 'width': 1.0, 'height': 0.3 }})
+
 " *****************************************************************************
 " splitjoin
 " gS to split a one line if statement into multiline
 " gJ it join a multiline if statement into one line
 " *****************************************************************************
 " vim-easymotion
-" use ,<motion> instead of ,,<motion>
-map <Leader> <Plug>(easymotion-prefix)
 " *****************************************************************************
 " vim-airline
 " use powerline font
@@ -135,8 +118,8 @@ nmap <C-t> :TagbarToggle<CR>
 " ale
 " *****************************************************************************
 let g:airline#extensions#ale#enabled = 1
-nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-nmap <silent> <C-j> <Plug>(ale_next_wrap)
+nmap <silent> <A-k> <Plug>(ale_previous_wrap)
+nmap <silent> <A-j> <Plug>(ale_next_wrap)
 highlight ALEWarning ctermbg=Black
 " *****************************************************************************
 " END PLUGIN DESCRIPTIONS
@@ -200,9 +183,9 @@ set ffs=unix,dos,mac
 set colorcolumn=100
 hi ColorColumn ctermbg=darkgrey guibg=darkgrey
 set textwidth=100
-" Or 80 in a ruby file
-autocmd BufRead,BufNewFile *.rb set colorcolumn=80
-autocmd BufRead,BufNewFile *.rb set textwidth=80
+" Or 150 in a ruby file
+autocmd BufRead,BufNewFile *.rb set colorcolumn=150
+autocmd BufRead,BufNewFile *.rb set textwidth=150
 " and 72 in a gitcommmit
 autocmd FileType gitcommit set colorcolumn=72
 autocmd FileType gitcommit set textwidth=72
@@ -286,7 +269,6 @@ map <leader><leader>w :call DeleteTrailingWS()<cr>
 map <leader>ss :setlocal spell!<cr>
 
 autocmd FileType gitcommit setlocal spell
-autocmd BufRead,BufNewFile *.txt setlocal spell
 autocmd BufRead,BufNewFile *.md  setlocal spell
 autocmd BufRead,BufNewFile *.tex setlocal spell
 

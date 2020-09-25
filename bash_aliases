@@ -8,9 +8,11 @@ alias sdiff='sdiff -w $(tput cols)'
 alias ggl="git log --all --graph --decorate --color --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 alias gg='ggl | head -30'
 alias gs='git status'
+alias vigs='vi $(git ls-files -m | xargs)'
 function gmb { git merge-base HEAD $1 }
 alias gdm='git diff $(gmb master) HEAD'
 alias be='bundle exec'
+alias bi='bundle install --quiet'
 alias pytest='python -m unittest discover'
 alias weather='curl "http://wttr.in/Seattle"'
 
