@@ -27,3 +27,4 @@ fresh tmux.conf --file=~/.tmux.conf
 fresh bin/with-dir --bin
 fresh bin/only-dir --bin
 fresh irbrc --file
+fresh gitattributes --file
