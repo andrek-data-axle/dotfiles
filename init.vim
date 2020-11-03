@@ -11,6 +11,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'jeetsukumaran/vim-buffergator'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'junegunn/vim-easy-align'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'bling/vim-airline'
@@ -121,6 +122,14 @@ let g:airline#extensions#ale#enabled = 1
 nmap <silent> <A-k> <Plug>(ale_previous_wrap)
 nmap <silent> <A-j> <Plug>(ale_next_wrap)
 highlight ALEWarning ctermbg=Black
+" *****************************************************************************
+" vim-easy-align
+" *****************************************************************************
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
 " *****************************************************************************
 " END PLUGIN DESCRIPTIONS
 
