@@ -129,3 +129,13 @@ let g:ctrlsf_backend = 'ack'
 let g:ctrlsf_default_view_mode = 'compact'
 let g:ctrlsf_ignore_dir = ['log', 'tmp']
 
+
+nmap  //   vip:s/^/\/\/ /<CR>  " insert c++ indent
+vmap  //   :s/^/\/\/ /<CR>
+nmap  r//  vip:s/^\/\/ //<CR>  " remove c++ indent
+vmap  r//  :s/^\/\/ //<CR>
+nmap  ##   vip:s/^/# /<CR>     " insert bash indent
+vmap  ##   :s/^/# /<CR>
+nmap  r##  vip:s/^# //<CR>     " remove bash indent
+vmap  r##  :s/^# //<CR>
+
