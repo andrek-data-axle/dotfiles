@@ -1,3 +1,19 @@
+" ---------------------------------------------------------------------------------------
+"
+" I make notes in this file too, because it makes sense for me to 
+" keep notes and mappings in the same place
+"
+" yank to system clipboard: "*5yy <- yank 5 lines
+" paste from sys clipboard: "*p
+
+" search+replace: mark files with <tab> in fzf buffer
+" press <enter> to send them to the quickfix buffer
+" then use this in qf buffer: :cfdo %s/<text to search>/<text to replace with>/g | update
+
+" comment out stuff: // or ## in normal mode; uncomment with r// or r##
+"
+" ---------------------------------------------------------------------------------------
+
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
@@ -55,6 +71,13 @@ Plugin 'terryma/vim-multiple-cursors'
 
 " better terminal mappings; not critical but offers ESC and :vterm
 Plugin 'vimlab/split-term.vim'
+
+" coffeescript syntax highlighting (and more); some projects still use it
+Plugin 'kchmck/vim-coffee-script'
+
+" color schemes
+Plugin 'drewtempelmeyer/palenight.vim'
+Plugin 'arcticicestudio/nord-vim'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -138,4 +161,6 @@ nmap  ##   vip:s/^/# /<CR>     " insert bash indent
 vmap  ##   :s/^/# /<CR>
 nmap  r##  vip:s/^# //<CR>     " remove bash indent
 vmap  r##  :s/^# //<CR>
+
+colorscheme nord
 

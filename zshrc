@@ -111,6 +111,12 @@ DEFAULT_USER=andrek
 # initialize rbenv
 eval "$(rbenv init -)"
 
+# initialize pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"
+eval "$(pyenv init -)"
+
 # My aliases
 # alias ww="cd ~/da-nua/credit-api"
 # alias vv="source ./.venv/bin/activate"
