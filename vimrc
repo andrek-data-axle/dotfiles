@@ -12,6 +12,10 @@
 
 " comment out stuff: // or ## in normal mode; uncomment with r// or r##
 "
+" IMPORTANT
+" On Linux (debian, ubuntu), link this file like this:
+" ln -s <this file> /home/andre/.config/nvim/init.vim
+"
 " ---------------------------------------------------------------------------------------
 
 set nocompatible              " be iMproved, required
@@ -24,7 +28,7 @@ call vundle#begin()
 " "call vundle#begin('~/some/path/here')
 "
 " let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
+Plugin 'VundleVim/Vundle.vim'
 "
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
