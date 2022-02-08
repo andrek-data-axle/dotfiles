@@ -98,10 +98,11 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
-" My Maps
-" -------
+" My custom maps (executed just by pressing command keys)
+" ------------------------------------------------
 map      <C-e>  :call NERDTreeActivate()<CR>
 map      <C-o>l :NERDTreeFind<CR>
+map      <C-o>j :%!python3 -m json.tool<CR>
 
 function NERDTreeActivate()
   :NERDTreeFocus
@@ -112,8 +113,14 @@ endfunction
 
 map      <C-o>p :Files<CR>
 map      <C-o>b :Buffers<CR>
-nmap     <C-o>f <Plug>CtrlSFPrompt
+nmap     <C-o>f :Ag<CR>
 vmap     <C-o>w <Plug>CtrlSFVwordPath
+
+" My custom commands (executed by :<command> mode)
+" Don't end them with <CR> lol
+command  Jf     %!python3 -m json.tool
+command  Js     %!python3 -m json.tool --sort-keys
+
 
 " other ctrlsf maps I don't use 
 " vmap     <C-F>F <Plug>CtrlSFVwordExec
