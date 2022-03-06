@@ -7,7 +7,7 @@ install oh-my-zsh in ~/oh-my-zsh
 you will also need to recreate .zshrc_aws with aws credentials
 
 ```
-ln is ~/platform/dotfiles/zshrc ~/.zshrc
+ln -s ~/platform/dotfiles/zshrc ~/.zshrc
 ```
 
 ## vim/nvim
