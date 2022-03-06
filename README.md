@@ -16,3 +16,7 @@ ln -s ~/platform/dotfiles/init.vim ~/.config/nvim
 ln -s ~/platform/dotfiles/vimrc ~/.vimrc
 ```
 
+## vundle
+```
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+```
