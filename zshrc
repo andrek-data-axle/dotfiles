@@ -121,7 +121,12 @@ eval "$(pyenv init -)"
 # alias ptt="APP_ENVIRONMENT=Test pytest tests/"
 # alias pms="python manage.py shell"
 # alias pmr="python manage.py runserver"
-alias ssa="ssh-add -K ~/.ssh/andrek-data-axle-2020"
+
+# Note
+# some command options differ between OSX and Linux
+# osx: alias ssa="ssh-add -K ~/.ssh/andrek-data-axle-2020"
+# linux: alias ssa="ssh-add ~/.ssh/andrek-data-axle-2020"
+alias ssa="ssh-add ~/.ssh/andrek-data-axle-2020"
 alias ww="cd ~/platform/content_system"
 alias beef="ssh andre@beef.mynetgear.com -p 22222"
 
