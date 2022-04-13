@@ -14,7 +14,7 @@ ln -s ~/platform/dotfiles/zshrc ~/.zshrc
 You must run both of those commands if you want to use nvim and vim.
 For nvim:
 ```
-ln -s ~/platform/dotfiles/init.vim ~/.config/nvim
+ln -s ~/platform/dotfiles/init.vim ~/.config/nvim/init.vim
 ```
 
 For vim:
