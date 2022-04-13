@@ -21,3 +21,6 @@ ln -s ~/platform/dotfiles/vimrc ~/.vimrc
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 ```
 
+## powerline fonts
+
+Install powerline fonts from github: https://github.com/powerline/fonts
