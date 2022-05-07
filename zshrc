@@ -128,8 +128,22 @@ eval "$(pyenv init -)"
 # linux: alias ssa="ssh-add ~/.ssh/andrek-data-axle-2020"
 alias ssa="ssh-add ~/.ssh/andrek-data-axle-2020"
 alias ww="cd ~/platform/content_system"
-alias beef="ssh andre@beef.mynetgear.com -p 22222"
+alias rr="sudo route delete default"
 
 # source My aws environment because it is secret
 source ~/.zshrc_aws
+
+# OS-specific stuff
+case `uname` in
+    Darwin)
+        # commands for OS X
+        ;;
+    Linux)
+        # Brew for linux adds this
+        eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+        ;;
+    FreeBSD)
+        # commannds for freebsd
+        ;;
+esac
 
