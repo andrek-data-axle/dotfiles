@@ -113,6 +113,7 @@ endfunction
 
 map      <C-o>p :Files<CR>
 map      <C-o>b :Buffers<CR>
+command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
 nmap     <C-o>f :Ag<CR>
 vmap     <C-o>w <Plug>CtrlSFVwordPath
 
