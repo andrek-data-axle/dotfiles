@@ -131,7 +131,7 @@ alias ww="cd ~/platform/content_system"
 alias rr="sudo route delete default"
 
 # source My aws environment because it is secret
-source ~/.zshrc_aws
+# source ~/.zshrc_aws
 
 # OS-specific stuff
 case `uname` in
@@ -147,3 +147,49 @@ case `uname` in
         ;;
 esac
 
+# aws-sso variables to set default account and role
+export AWS_SSO_ACCOUNT_ID=028563536761
+export AWS_SSO_ROLE_NAME=AdministratorAccess
+
+# BEGIN_AWS_SSO_CLI
+
+# AWS SSO requires `bashcompinit` which needs to be enabled once and
+# only once in your shell.  Hence we do not include the two lines:
+#
+# autoload -Uz +X compinit && compinit
+# autoload -Uz +X bashcompinit && bashcompinit
+#
+# If you do not already have these lines, you must COPY the lines 
+# above, place it OUTSIDE of the BEGIN/END_AWS_SSO_CLI markers
+# and of course uncomment it
+
+__aws_sso_profile_complete() {
+     local _args=${AWS_SSO_HELPER_ARGS:- -L error}
+    _multi_parts : "($(/usr/local/bin/aws-sso list --csv $_args Profile))"
+}
+
+aws-sso-profile() {
+    local _args=${AWS_SSO_HELPER_ARGS:- -L error}
+    if [ -n "$AWS_PROFILE" ]; then
+        echo "Unable to assume a role while AWS_PROFILE is set"
+        return 1
+    fi
+    eval $(/usr/local/bin/aws-sso $_args eval -p "$1")
+    if [ "$AWS_SSO_PROFILE" != "$1" ]; then
+        return 1
+    fi
+}
+
+aws-sso-clear() {
+    local _args=${AWS_SSO_HELPER_ARGS:- -L error}
+    if [ -z "$AWS_SSO_PROFILE" ]; then
+        echo "AWS_SSO_PROFILE is not set"
+        return 1
+    fi
+    eval $(/usr/local/bin/aws-sso -sso eval $_args -c)
+}
+
+compdef __aws_sso_profile_complete aws-sso-profile
+complete -C /usr/local/bin/aws-sso aws-sso
+
+# END_AWS_SSO_CLI
