@@ -115,6 +115,9 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init --path)"
 eval "$(pyenv init -)"
 
+# set ipdb as the default python debugger
+export PYTHONBREAKPOINT="ipdb.set_trace"
+
 # My aliases
 # alias ww="cd ~/da-nua/credit-api"
 # alias vv="source ./.venv/bin/activate"
@@ -129,6 +132,9 @@ eval "$(pyenv init -)"
 alias ssa="ssh-add ~/.ssh/andrek-data-axle-2020"
 alias ww="cd ~/platform/content_system"
 alias rr="sudo route delete default"
+alias py="cd ~/platform/axle_pyspark"
+alias gcan="git commit --amend --no-edit"
+alias gpff="git push --force"
 
 # source My aws environment because it is secret
 # source ~/.zshrc_aws
@@ -193,3 +199,5 @@ compdef __aws_sso_profile_complete aws-sso-profile
 complete -C /usr/local/bin/aws-sso aws-sso
 
 # END_AWS_SSO_CLI
+
+source /Users/andrek/.docker/init-zsh.sh || true # Added by Docker Desktop

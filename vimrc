@@ -53,8 +53,8 @@ Plugin 'scrooloose/nerdtree'
 
 " fuzzy finder; finds files, patterns in files, buffers, etc.
 " install 'ag' or 'rg' to search files
-Plugin 'junegunn/fzf.vim'
 Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf.vim'
 
 " file finder (alternative to fzf+ag/rg)
 " uses ack
@@ -113,7 +113,7 @@ endfunction
 
 map      <C-o>p :Files<CR>
 map      <C-o>b :Buffers<CR>
-command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
+command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}), <bang>0)
 nmap     <C-o>f :Ag<CR>
 vmap     <C-o>w <Plug>CtrlSFVwordPath
 
@@ -121,6 +121,7 @@ vmap     <C-o>w <Plug>CtrlSFVwordPath
 " Don't end them with <CR> lol
 command  Jf     %!python3 -m json.tool
 command  Js     %!python3 -m json.tool --sort-keys
+command  Rc     %!rubocop % -a
 
 
 " other ctrlsf maps I don't use 
@@ -163,7 +164,7 @@ let g:airline_symbols.colnr = '⇿'
 let g:ctrlsf_backend = 'ack'
 let g:ctrlsf_default_view_mode = 'compact'
 let g:ctrlsf_ignore_dir = ['log', 'tmp']
-
+let g:fzf_preview_window = ['right,50%', 'ctrl-/']
 
 nmap  //   vip:s/^/\/\/ /<CR>  " insert c++ indent
 vmap  //   :s/^/\/\/ /<CR>
