@@ -1,3 +1,11 @@
+" Enable native package loading
+" Vim automatically loads everything in ~/.vim/pack/*/start
+syntax on
+filetype plugin indent on
+
+" Optional: some fzf.vim defaults
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
+
 " ---------------------------------------------------------------------------------------
 "
 " I make notes in this file too, because it makes sense for me to 
@@ -82,6 +90,7 @@ Plugin 'kchmck/vim-coffee-script'
 " color schemes
 Plugin 'drewtempelmeyer/palenight.vim'
 Plugin 'arcticicestudio/nord-vim'
+Plugin 'casonadams/walh'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -122,7 +131,7 @@ vmap     <C-o>w <Plug>CtrlSFVwordPath
 command  Jf     %!python3 -m json.tool
 command  Js     %!python3 -m json.tool --sort-keys
 command  Rc     %!rubocop % -a
-
+command  Cf     %!clang-format
 
 " other ctrlsf maps I don't use 
 " vmap     <C-F>F <Plug>CtrlSFVwordExec
@@ -142,6 +151,7 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 set nowrap
+set norelativenumber
 
 " Airline Configuration
 " ---------------------
@@ -175,5 +185,5 @@ vmap  ##   :s/^/# /<CR>
 nmap  r##  vip:s/^# //<CR>     " remove bash indent
 vmap  r##  :s/^# //<CR>
 
-colorscheme nord
+colorscheme walh-nord
 

@@ -75,18 +75,14 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
+
 plugins=(git)
-
 source $ZSH/oh-my-zsh.sh
-
-# User configuration
-
-# export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
-# Preferred editor for local and remote sessions
+# Preferred editor
 export EDITOR='vim'
 
 # Compilation flags
@@ -103,17 +99,6 @@ export EDITOR='vim'
 
 # Default user (suppresses user@host at prompt)
 DEFAULT_USER=andrek
-
-# initialize rbenv
-export RBENV_ROOT="$HOME/.rbenv"
-export PATH="$RBENV_ROOT/bin:$PATH"
-eval "$(rbenv init -)"
-
-# initialize pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init --path)"
-eval "$(pyenv init -)"
 
 # set ipdb as the default python debugger
 export PYTHONBREAKPOINT="ipdb.set_trace"
@@ -142,62 +127,19 @@ alias gpff="git push --force"
 # OS-specific stuff
 case `uname` in
     Darwin)
-        # commands for OS X
+	    # Apple Silicon Homebrew and other osx stuff
+	    eval "$(/opt/homebrew/bin/brew shellenv)"
         ;;
     Linux)
-        # Brew for linux adds this
-        eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
         ;;
     FreeBSD)
-        # commannds for freebsd
+        # commands for freebsd
         ;;
 esac
 
+# activate mise-en-place
+eval "$(mise activate zsh)"
+
 # aws-sso variables to set default account and role
-export AWS_SSO_ACCOUNT_ID=028563536761
-export AWS_SSO_ROLE_NAME=AdministratorAccess
-
-# BEGIN_AWS_SSO_CLI
-
-# AWS SSO requires `bashcompinit` which needs to be enabled once and
-# only once in your shell.  Hence we do not include the two lines:
-#
-# autoload -Uz +X compinit && compinit
-# autoload -Uz +X bashcompinit && bashcompinit
-#
-# If you do not already have these lines, you must COPY the lines 
-# above, place it OUTSIDE of the BEGIN/END_AWS_SSO_CLI markers
-# and of course uncomment it
-
-__aws_sso_profile_complete() {
-     local _args=${AWS_SSO_HELPER_ARGS:- -L error}
-    _multi_parts : "($(/usr/local/bin/aws-sso list --csv $_args Profile))"
-}
-
-aws-sso-profile() {
-    local _args=${AWS_SSO_HELPER_ARGS:- -L error}
-    if [ -n "$AWS_PROFILE" ]; then
-        echo "Unable to assume a role while AWS_PROFILE is set"
-        return 1
-    fi
-    eval $(/usr/local/bin/aws-sso $_args eval -p "$1")
-    if [ "$AWS_SSO_PROFILE" != "$1" ]; then
-        return 1
-    fi
-}
-
-aws-sso-clear() {
-    local _args=${AWS_SSO_HELPER_ARGS:- -L error}
-    if [ -z "$AWS_SSO_PROFILE" ]; then
-        echo "AWS_SSO_PROFILE is not set"
-        return 1
-    fi
-    eval $(/usr/local/bin/aws-sso -sso eval $_args -c)
-}
-
-compdef __aws_sso_profile_complete aws-sso-profile
-complete -C /usr/local/bin/aws-sso aws-sso
-
-# END_AWS_SSO_CLI
-
-source /Users/andrek/.docker/init-zsh.sh || true # Added by Docker Desktop
+# export AWS_SSO_ACCOUNT_ID=028563536761
+# export AWS_SSO_ROLE_NAME=DA-Administrator
