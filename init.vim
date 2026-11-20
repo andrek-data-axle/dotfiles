@@ -184,3 +184,16 @@ vmap  r##  :s/^# //<CR>
 
 colorscheme walh-nord
 
+" === CSV View Setup ===
+" Initialize the plugin's core engine using a safe Lua call
+if has('nvim')
+    silent! lua require('csvview').setup()
+endif
+
+" Automatically activate the grid view when opening a CSV or TSV file
+autocmd BufRead,BufNewFile *.csv,*.tsv CsvViewEnable
+
+" Set up spreadsheet arrow navigation using pure Vim mappings
+autocmd FileType csv,tsv nnoremap <buffer> <Tab> :lua require('csvview').jump_field(1)<CR>
+autocmd FileType csv,tsv nnoremap <buffer> <S-Tab> :lua require('csvview').jump_field(-1)<CR>
+

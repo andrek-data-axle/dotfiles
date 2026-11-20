@@ -103,21 +103,13 @@ DEFAULT_USER=andrek
 # set ipdb as the default python debugger
 export PYTHONBREAKPOINT="ipdb.set_trace"
 
-# My aliases
-# alias ww="cd ~/da-nua/credit-api"
-# alias vv="source ./.venv/bin/activate"
-# alias ptt="APP_ENVIRONMENT=Test pytest tests/"
-# alias pms="python manage.py shell"
-# alias pmr="python manage.py runserver"
-
 # Note
 # some command options differ between OSX and Linux
 # osx: alias ssa="ssh-add -K ~/.ssh/andrek-data-axle-2020"
 # linux: alias ssa="ssh-add ~/.ssh/andrek-data-axle-2020"
-alias ssa="ssh-add ~/.ssh/andrek-data-axle-2020"
-alias ww="cd ~/platform/content_system"
-alias rr="sudo route delete default"
-alias py="cd ~/platform/axle_pyspark"
+alias ww="cd ~/dbcomp/business_email_build"
+alias mm="cd ~/dbcomp/matching"
+alias bb="cd /opt/builds/business-email"
 alias gcan="git commit --amend --no-edit"
 alias gpff="git push --force"
 
@@ -140,6 +132,3 @@ esac
 # activate mise-en-place
 eval "$(mise activate zsh)"
 
-# aws-sso variables to set default account and role
-# export AWS_SSO_ACCOUNT_ID=028563536761
-# export AWS_SSO_ROLE_NAME=DA-Administrator
